@@ -1,145 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Localizador de Estudantes • Calendário Letivo</title>
-
-  <!-- === STYLES EMBUTIDOS === -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-height: 100vh;
-      color: #333;
-    }
-
-    header {
-      background: #005bbb;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      width: 100%;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-
-    main {
-      margin-top: 30px;
-      width: 100%;
-      max-width: 600px;
-      background: white;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
-    }
-
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 0.65rem 0.85rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    button {
-      background: #005bbb;
-      color: white;
-      border: none;
-      padding: 0.85rem 1.25rem;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.25s ease;
-    }
-    button:hover {
-      background: #004999;
-    }
-
-    #resultados {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      border: 1px dashed #666;
-      background: #fafafa;
-      border-radius: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Escolar</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Localizador de Estudantes</h1>
 
-  <header>
-    <h1>Localizador de Estudantes</h1>
-    <p>6º e 7º Anos • Letivo 2026</p>
-  </header>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Digite o nome do estudante">
+            <button onclick="buscarEstudante()">Buscar</button>
+        </div>
 
-  <main>
-    <!-- === FORMULÁRIO DE BUSCA === -->
-    <div class="form-group">
-      <label for="nome">Nome do Estudante:</label>
-      <input type="text" id="nome" placeholder="Digite o nome completo">
+        <div id="resultados"></div>
     </div>
 
-    <div class="form-group">
-      <label for="serie">Série:</label>
-      <select id="serie">
-        <option value="">Selecione</option>
-        <option value="6">6º Ano</option>
-        <option value="7">7º Ano</option>
-      </select>
-    </div>
-
-    <button onclick="buscarEstudante()">Buscar</button>
-
-    <!-- === RESULTADOS === -->
-    <div id="resultados"></div>
-  </main>
-
-  <!-- === SCRIPT EMBUTIDO === -->
-  <script>
-    // Exemplo de dados estáticos (substitua pelos reais)
-    const estudantes = [
-      { nome: "Ana Silva", serie: "6", turma: "A" },
-      { nome: "Bruno Santos", serie: "6", turma: "B" },
-      { nome: "Carlos Oliveira", serie: "7", turma: "A" },
-      { nome: "Daniela Costa", serie: "7", turma: "B" }
-    ];
-
-    function buscarEstudante() {
-      const nomeInput = document.getElementById("nome").value.toLowerCase();
-      const serieInput = document.getElementById("serie").value;
-      const resultadosEl = document.getElementById("resultados");
-
-      // Filtrar base dados
-      const resultados = estudantes.filter(est => {
-        const matchNome = nomeInput ? est.nome.toLowerCase().includes(nomeInput) : true;
-        const matchSerie = serieInput ? est.serie === serieInput : true;
-        return matchNome && matchSerie;
-      });
-
-      // Renderizar
-      if (resultados.length > 0) {
-        resultadosEl.innerHTML = resultados.map(est => 
-          `<p><strong>${est.nome}</strong> — ${est.serie}º Ano (Turma ${est.turma})</p>`
-        ).join("");
-      } else {
-        resultadosEl.innerHTML = "<p>Nenhum estudante encontrado.</p>";
-      }
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
