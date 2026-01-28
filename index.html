@@ -1,1 +1,45 @@
-uyguyhgu
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca Escolar 2026</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Localizador de Estudantes</h1>
+            <p class="subtitle">6º e 7º Anos | Letivo 2026</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Digite o nome do estudante..."
+                    autocomplete="off"
+                >
+                <button id="searchBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    Buscar
+                </button>
+            </div>
+            <div id="searchCounter" class="counter"></div>
+        </div>
+
+        <div id="resultados" class="resultados"></div>
+
+        <div id="loading" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Buscando...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
